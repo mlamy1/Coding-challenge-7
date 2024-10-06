@@ -64,3 +64,19 @@ let HR = calculateDepartmentSalary(company.departments[1]); // Used to format me
 
 console.log(`The total salary for the Accounting department is: $${accounting}`); // Message displays total. 
 console.log(`The total salary for HR is: $${HR}`); // Message displays total.  
+
+//Task 3: Create a Function to Calculate the Total Salary for All Departments
+
+function calculateCompanySalary(company) { // Function used to calculate total salary for entire company. 
+    let totalCompanySalary = 0; // Sets company total salary to 0. 
+
+    company.departments.forEach(department => { // Used to search each department in the company.
+        totalCompanySalary += calculateDepartmentSalary(department); // Used to calculate the total salary of each department to the company total. 
+    });
+    return totalCompanySalary;
+}
+
+let overallSalary = calculateCompanySalary(company); // Used to format message. 
+
+console.log(`The total salary for the entire company is: $${overallSalary}`); // Message displays total salary for the whole company. 
+
