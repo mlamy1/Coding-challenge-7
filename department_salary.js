@@ -39,3 +39,28 @@ const company = {
     ]
 };
 // Sample data used
+
+// Task 2: 
+
+function calculateDepartmentSalary(department) {
+    let totalSalary = 0; // Set salary to 0 
+
+    function calculateEmployeeSalary(employee) { // Function used to calculate the salary of an employee and subordinates. 
+        totalSalary += employee.salary; // Calculation to add employee's salary to total. 
+        if(employee.subordinates.length > 0 ) { // If employee has subordinates, 
+            employee.subordinates.forEach(subordinate => {
+                calculateEmployeeSalary(subordinate); // the salary of each subordinate will be calculated. 
+            });
+        }
+    }
+    department.employees.forEach(employee => { // Used to find every employee in the department and add their salaries. 
+        calculateEmployeeSalary(employee);
+    });
+    return totalSalary; 
+};
+
+let accounting = calculateDepartmentSalary(company.departments[0]); // Used to format message. 
+let HR = calculateDepartmentSalary(company.departments[1]); // Used to format message. 
+
+console.log(`The total salary for the Accounting department is: $${accounting}`); // Message displays total. 
+console.log(`The total salary for HR is: $${HR}`); // Message displays total.  
